@@ -23,7 +23,6 @@ public class ProductController {
 		return productService.saveProduct(productDto);
 	}
 	
-	
 	@GetMapping("/products/byBrand")
 	public List<Product> findProductsByBrandName(){
 		return productService.findProductsByBrandName();

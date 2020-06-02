@@ -61,6 +61,13 @@ public class ProductDto {
 	public void setProductColor(String productColor) {
 		this.productColor = productColor;
 	}
+
+	@Override
+	public String toString() {
+		return "ProductDto [id=" + id + ", brandName=" + brandName + ", productType=" + productType + ", productPrice="
+				+ productPrice + ", productSize=" + productSize + ", productColor=" + productColor + "]";
+	}
+	
 	
 	
 }

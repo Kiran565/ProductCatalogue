@@ -1,6 +1,7 @@
 package com.mphasis.service;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -14,12 +15,16 @@ public class ProductServiceImpl implements ProductService {
 	private static String PRODUCT_SAVE_MESSAGE_SUCCESS = "Successfully Saved !!";
 	private static String PRODUCT_SAVE_MESSAGE_FAILURE = "Successfully Not Saved !!";
 	
+	Logger logger = Logger.getLogger(ProductServiceImpl.class.getName());
+	
 	@Autowired
 	private ProductRepository productRepository;
 
 	@Override
 	public String saveProduct(ProductDto productDto) {
 		try {
+		logger.info(" Product Details for Saving {} " +productDto);
+		
 		Product product = productRepository.findByBrandNameAndProductTypeAndProductSize(productDto.getBrandName(), productDto.getProductType(), productDto.getProductSize());
 		product = ProductMapping.convertProductDtoToProduct(productDto, product);	
 		productRepository.save(product);
